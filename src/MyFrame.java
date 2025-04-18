@@ -15,8 +15,6 @@ public class MyFrame extends JFrame implements KeyEventDispatcher {
     JTextField WeightField;
     JTextField CoordinateField;
     List<JTextField> textFieldList = new ArrayList<>();
-    boolean sechen = false;
-    boolean kreplenia = false;
     String s = "";
 
     public MyFrame() {
@@ -51,7 +49,7 @@ public class MyFrame extends JFrame implements KeyEventDispatcher {
 
 
             if (i==3){
-                panel.setLayout(new BorderLayout());
+
 
                 JLabel lengthLabel = new JLabel("Длина: ");
                 lengthLabel.setLabelFor(LengthField);
@@ -93,7 +91,8 @@ public class MyFrame extends JFrame implements KeyEventDispatcher {
                         double coordinate= Double.parseDouble(coordinatefield.getText());
 
 
-                        Grath be = new Grath();  be.paint(length,weight,coordinate,zakrep);
+                        Grath be = new Grath();
+                        be.paint(length,weight,coordinate,zakrep);
                     }
                 });
                 panel.add(tek);

@@ -63,26 +63,30 @@ public class Grath {
                     double MB=(-1)*weight*coordinate*coordinate*b/length/length;
                     double Mmax=A*coordinate+MA;
 
-                    if(MA>MB){
-                        double razniza = (double) Math.round((Mmax-MB)/(HEIGHT-11)*1000)/100;
-                        int coordinate1 = (int) Math.round(coordinate*WIDTH/length*100)/100;
-                        g.setColor(Color.darkGray);
-                        g.fillRect(10, (HEIGHT-1) / 2 * 10 +10, 1000, 40);
+                    if(MA>MB) {
+                        if (Mmax > MB*(-1)) {
+                            double delenie = (double) Math.round(Mmax/10*100) / 100;
+                            int coordinate1 = (int) Math.round(coordinate * WIDTH / length * 100) / 100;
+                            int coordinateMa=(int) Math.round(coordinate1 * MA/Mmax*100) / 100;
+                            int coordinateMb=(int) Math.round(coordinate1 * MB/Mmax*100) / 100;
+                            g.setColor(Color.darkGray);
+                            g.fillRect(10, (HEIGHT - 1) / 2 * 10 + 20, 1000, 20);
 
-                        g.setColor(Color.RED);
-                        g.drawLine(0, (HEIGHT-1) / 2 * 10, WIDTH * 10, (HEIGHT-1) / 2 * 10);
-                        g.drawLine(10, 0, 10, HEIGHT * 10);
+                            g.setColor(Color.RED);
+                            g.drawLine(0, (HEIGHT - 1) / 2 * 10, WIDTH * 10, (HEIGHT - 1) / 2 * 10);
+                            g.drawLine(10, 0, 10, HEIGHT * 10);
 
+                        }else{
+
+                        }
                     }
-                    int razniza = (int) Math.round(A );
-                    int coordinate1 = (int) Math.round(coordinate*WIDTH/length*100)/100;
+
                     g.setColor(Color.darkGray);
-                    g.fillRect(10, (HEIGHT-1) / 2 * 10 +10, 1000, 40);
+                    g.fillRect(10, (HEIGHT-1) / 2 * 10 +20, 1000, 20);
 
                     g.setColor(Color.RED);
                     g.drawLine(0, (HEIGHT-1) / 2 * 10, WIDTH * 10, (HEIGHT-1) / 2 * 10);
                     g.drawLine(10, 0, 10, HEIGHT * 10);
-
                 }
 
             }
