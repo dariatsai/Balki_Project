@@ -42,7 +42,7 @@ public class MyFrame extends JFrame implements KeyEventDispatcher {
                 tabsLeft.addTab("Закрепление", panel);                // Подключение мнемоники
                 tabsLeft.setMnemonicAt(i - 1, String.valueOf(i).charAt(0));
 
-                ImageIcon imageIcon = new ImageIcon("C:\\Users\\41570\\Downloads\\закрепление.jpg");
+                ImageIcon imageIcon = new ImageIcon("закрепление.jpg");
                 JLabel label = new JLabel(imageIcon);
                 panel.add(label);
             }
