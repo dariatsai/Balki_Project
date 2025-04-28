@@ -25,7 +25,7 @@ public class MyFrame extends JFrame {
     String[] namber1 = {
             "10", "12", "14", "16", "18", "18a", "20", "20a", "22", "22a", "24", "24a",
             "27", "27a", "30", "30a", "33","36", "40", "45", "50", "55", "60"};
-    String[] momentinertsii={};
+    String[] momentinertsii={   };
 
     public MyFrame() {
         JTabbedPane tabsLeft = new JTabbedPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT);
