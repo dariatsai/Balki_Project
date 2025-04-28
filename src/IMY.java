@@ -6,8 +6,6 @@ public class IMY { // класс с методом main()
     public static void main(String[] args) {
         MyFrame frame = new MyFrame();
 
-        KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
-        manager.addKeyEventDispatcher(frame);
         JPanel buttonsPanel = new JPanel();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1000, 1000); // размеры окна

@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyFrame extends JFrame implements KeyEventDispatcher {
+public class MyFrame extends JFrame {
     boolean text = false;
     String arr[] = new String[4];
     TextField textField;
@@ -17,6 +17,15 @@ public class MyFrame extends JFrame implements KeyEventDispatcher {
     JTextField CoordinateField;
     List<JTextField> textFieldList = new ArrayList<>();
     String s = "";
+    String zakrep="";
+    String number="";
+    double length;
+    double weight;
+    double coordinate;
+    String[] namber1 = {
+            "10", "12", "14", "16", "18", "18a", "20", "20a", "22", "22a", "24", "24a",
+            "27", "27a", "30", "30a", "33","36", "40", "45", "50", "55", "60"};
+    String[] momentinertsii={};
 
     public MyFrame() {
         JTabbedPane tabsLeft = new JTabbedPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT);
@@ -24,10 +33,8 @@ public class MyFrame extends JFrame implements KeyEventDispatcher {
             JPanel panel = new JPanel();
 
 
-
             if (i == 1) {
-                JButton button1 = new JButton("Выбрать");
-                panel.add(BorderLayout.WEST,button1);// Добавление вкладки
+
                 String[] namber = {
                         "10",
                         "12",
@@ -46,7 +53,6 @@ public class MyFrame extends JFrame implements KeyEventDispatcher {
                         "30",
                         "30a",
                         "33",
-                        "33",
                         "36",
                         "40",
                         "45",
@@ -57,6 +63,13 @@ public class MyFrame extends JFrame implements KeyEventDispatcher {
                 JComboBox editComboBox = new JComboBox(namber);
                 editComboBox.setEditable(true);
                 panel.add(editComboBox);
+                JButton button1 = new JButton("Выбрать");
+                panel.add(BorderLayout.WEST, button1);// Добавление вкладки
+                button1.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        number = (String) editComboBox.getSelectedItem();
+                    }
+                });
                 ImageIcon imageIcon1 = new ImageIcon("двутаврпараметры.jpg");
                 JLabel label1 = new JLabel(imageIcon1);
                 panel.add(label1);
@@ -69,6 +82,24 @@ public class MyFrame extends JFrame implements KeyEventDispatcher {
 
             if (i == 2) {
 
+                JLabel namezakreplenie = new JLabel("   Закрепление: ");
+                panel.add(namezakreplenie);
+
+                String[] zakreplenie = {
+                        "Шарнир",
+                        "Защемление"
+                };
+                JComboBox editComboBox = new JComboBox(zakreplenie);
+                editComboBox.setEditable(true);
+                panel.add(editComboBox);
+                JButton button2 = new JButton("Выбрать");
+                panel.add(BorderLayout.WEST, button2);
+                button2.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        zakrep = (String) editComboBox.getSelectedItem();
+                    }
+                });
+
 
                 tabsLeft.addTab("Закрепление", panel);                // Подключение мнемоники
                 tabsLeft.setMnemonicAt(i - 1, String.valueOf(i).charAt(0));
@@ -79,7 +110,7 @@ public class MyFrame extends JFrame implements KeyEventDispatcher {
             }
 
 
-            if (i==3){
+            if (i == 3) {
 
 
                 JLabel lengthLabel = new JLabel("Длина(м): ");
@@ -100,50 +131,42 @@ public class MyFrame extends JFrame implements KeyEventDispatcher {
                 panel.add(coordinateLabel);
                 panel.add(coordinatefield);
 
-                JLabel namezakreplenie = new JLabel("   Закрепление: ");
-                panel.add(namezakreplenie);
-
-                String[] zakreplenie = {
-                        "Шарнир",
-                        "Защемление"
-                };
-                JComboBox editComboBox = new JComboBox(zakreplenie);
-                editComboBox.setEditable(true);
-                panel.add(editComboBox);
 
                 JButton tek = new JButton("Обработка");
 
 
                 tek.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        String zakrep =(String) editComboBox.getSelectedItem();
-                        double length = Double.parseDouble(lenthfield.getText());
-                        double weight = Double.parseDouble(weightfield.getText());
-                        double coordinate= Double.parseDouble(coordinatefield.getText());
+                        length = Double.parseDouble(lenthfield.getText());
+                        weight = Double.parseDouble(weightfield.getText());
+                        coordinate = Double.parseDouble(coordinatefield.getText());
 
 
                         Grath be = new Grath();
-                        be.paint(length,weight,coordinate,zakrep);
+                        be.paint(length, weight, coordinate, zakrep);
                     }
                 });
                 panel.add(tek);
-                tabsLeft.addTab("Нагрузка", panel);                // Подключение мнемоники
+
+                if(zakrep.equals("Шарнир")){
+
+                }else if (zakrep.equals("Защемление")){
+
+                    JLabel progibLabel = new JLabel("Прогиб = ");
+                    panel.add(progibLabel);
+
+
+                }
+
+                tabsLeft.addTab("Нагрузка", panel);// Подключение мнемоники
                 tabsLeft.setMnemonicAt(i - 1, String.valueOf(i).charAt(0));
             }
 
         }
+
         getContentPane().setLayout(new GridLayout());
         getContentPane().add(tabsLeft);
         this.textField = new TextField("value");
     }
 
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent e) {
-        if (text) {
-            if (e.getID() == KeyEvent.KEY_PRESSED && e.getKeyCode() == KeyEvent.VK_1) {
-                s += '1';
-            }
-        }
-        return false;
-    }
 }
