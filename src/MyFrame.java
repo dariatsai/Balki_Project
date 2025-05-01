@@ -22,19 +22,21 @@ public class MyFrame extends JFrame {
     double length;
     double weight;
     double coordinate;
+    int nomer;
     String[] namber1 = {
             "10", "12", "14", "16", "18", "18a", "20", "20a", "22", "22a", "24", "24a",
             "27", "27a", "30", "30a", "33","36", "40", "45", "50", "55", "60"};
-    String[] momentinertsii={   };
+    int[] momentinertsii={
+            198,350,572,873,1290,1430,1840,2030,2550,2790,3460,3800,5010,
+            5500,7080,7780,9840,13380,19062,27696,39727,55962,76806};
 
     public MyFrame() {
         JTabbedPane tabsLeft = new JTabbedPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT);
         for (int i = 1; i <= 3; i++) {
-            JPanel panel = new JPanel();
+            JPanel panel = new JPanel(new FlowLayout());
 
 
             if (i == 1) {
-
                 String[] namber = {
                         "10",
                         "12",
@@ -133,6 +135,7 @@ public class MyFrame extends JFrame {
 
 
                 JButton tek = new JButton("Обработка");
+                panel.add(tek);
 
 
                 tek.addActionListener(new ActionListener() {
@@ -140,23 +143,30 @@ public class MyFrame extends JFrame {
                         length = Double.parseDouble(lenthfield.getText());
                         weight = Double.parseDouble(weightfield.getText());
                         coordinate = Double.parseDouble(coordinatefield.getText());
-
-
                         Grath be = new Grath();
                         be.paint(length, weight, coordinate, zakrep);
+                        panel.add(tek);
+
+                        if(zakrep.equals("Шарнир")){
+                            for(int i=0;i<namber1.length;i++){
+                                if(number.equals(namber1[i])){
+                                    nomer=i;
+                                    break;
+                                }
+
+                            }
+
+                        }else if (zakrep.equals("Защемление")){
+
+                        }
+                        JLabel progibLabel = new JLabel("Прогиб ="+nomer);
+                        progibLabel.setVerticalAlignment(JLabel.CENTER);
+                        progibLabel.setHorizontalAlignment(JLabel.CENTER);
+                        progibLabel.setForeground(Color.GREEN);
+                        panel.add(progibLabel);
                     }
                 });
-                panel.add(tek);
 
-                if(zakrep.equals("Шарнир")){
-
-                }else if (zakrep.equals("Защемление")){
-
-                    JLabel progibLabel = new JLabel("Прогиб = ");
-                    panel.add(progibLabel);
-
-
-                }
 
                 tabsLeft.addTab("Нагрузка", panel);// Подключение мнемоники
                 tabsLeft.setMnemonicAt(i - 1, String.valueOf(i).charAt(0));
@@ -170,3 +180,4 @@ public class MyFrame extends JFrame {
     }
 
 }
+
