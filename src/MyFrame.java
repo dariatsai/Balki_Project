@@ -35,7 +35,6 @@ public class MyFrame extends JFrame {
         for (int i = 1; i <= 3; i++) {
             JPanel panel = new JPanel(new FlowLayout());
 
-
             if (i == 1) {
                 String[] namber = {
                         "10",
