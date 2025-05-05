@@ -117,7 +117,6 @@ public class Grath {
                         g.drawLine(coordinatemaxM,Mmaxy,coordinateMB,MBy);
 
                     } else {
-
                         double delenie = (double) Math.round(Mmax / 4 * 100) / 100;
                         int MBy = 500 - (int) Math.round(MB / Mmax * 400);
                         int MAy = 500 - (int) Math.round(MA / Mmax * 400);
