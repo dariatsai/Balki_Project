@@ -128,7 +128,7 @@ public class MyFrame extends JFrame {
                 panel.add(lengthLabel);
                 panel.add(lenthfield);
 
-                JLabel weightLabel = new JLabel("Вес груза(м): ");
+                JLabel weightLabel = new JLabel("Вес груза(кг): ");
                 weightLabel.setLabelFor(WeightField);
                 JTextField weightfield = new JTextField(10);
                 panel.add(weightLabel);
@@ -177,8 +177,16 @@ public class MyFrame extends JFrame {
                                     break;
                                 }
                             }
+                            double a=length-coordinate;
+                            progib=-1*weight*Math.pow(coordinate*a/length,3)/3/E/momentinertsii[nomer];
                             double b=length-coordinate;
-                            progib=-1*weight*Math.pow(coordinate*b/length,3)/3/E/momentinertsii[nomer];
+                            double A=weight*b*b/length/length/length*(3*coordinate+b);
+                            double MA=weight*coordinate*b*b/length/length;
+                            double MB=weight*coordinate*coordinate*b/length/length;
+                            double Mmax=-1*A*coordinate+MA;
+                            double M=Math.max(MA,MB);
+                            double maxM=Math.max(M,Mmax);
+                            prochnost=maxM/Wx[nomer];
 
                         }
                         JLabel progibLabel = new JLabel("                                                       ПРОГИБ =" + progib+" м");
@@ -186,7 +194,7 @@ public class MyFrame extends JFrame {
                         progibLabel.setHorizontalAlignment(JLabel.CENTER);
                         progibLabel.setForeground(Color.BLUE);
                         panel.add(progibLabel);
-                        JLabel prochnostLabel = new JLabel("                                                       ПРОЧНОСТЬ =" + prochnost);
+                        JLabel prochnostLabel = new JLabel("                                                       ПРОЧНОСТЬ =" + prochnost+"MПа");
                         prochnostLabel.setVerticalAlignment(JLabel.NORTH);
                         prochnostLabel.setHorizontalAlignment(JLabel.CENTER);
                         if(prochnost<prochnost0){
