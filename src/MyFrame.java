@@ -191,10 +191,19 @@ public class MyFrame extends JFrame {
                         prochnostLabel.setHorizontalAlignment(JLabel.CENTER);
                         if(prochnost<prochnost0){
                             prochnostLabel.setForeground(Color.green);
+                            panel.add(prochnostLabel);
+                            ImageIcon imageIcon4 = new ImageIcon("норма.jpg");
+                            JLabel label4 = new JLabel(imageIcon4);
+                            panel.add(label4);
                         }else{
                             prochnostLabel.setForeground(Color.RED);
+                            panel.add(prochnostLabel);
+                            ImageIcon imageIcon3 = new ImageIcon("перегруз.jpg");
+                            JLabel label3 = new JLabel(imageIcon3);
+                            panel.add(label3);
+
                         }
-                        panel.add(prochnostLabel);
+
                     }
                 });
 
