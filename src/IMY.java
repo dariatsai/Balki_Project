@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class IMY { // класс с методом main()
-
     public static void main(String[] args) {
         MyFrame frame = new MyFrame();
 

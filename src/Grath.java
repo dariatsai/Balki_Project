@@ -5,6 +5,7 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 public class Grath {
+
     public void paint(double length, double weight, double coordinate, String zakrep) {
         JFrame frame1 = new JFrame("График эпюры моментов от координаты");
         frame1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
