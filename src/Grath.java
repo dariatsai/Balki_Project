@@ -50,6 +50,8 @@ public class Grath {
                     for(int i=0;i<=WIDTH/10;i++) {
                         g.drawString("" + i*length1, 100 * i + 10, HEIGHT / 2 * 10 + 30);
                     }
+                    g.drawString("Н*м",40,30);
+                    g.drawString("М",(WIDTH-1)*10,HEIGHT/2*10);
 
                     g.setColor(Color.BLUE);
                     g.drawLine(10, (HEIGHT-1) / 2 * 10+20, coordinate1*10+10, 20);
